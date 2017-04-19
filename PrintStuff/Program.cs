@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTesting
+namespace PrintStuff
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var data = new DataSource();
+            var formatter = new Formatter();
+            var printer = new Printer(formatter, data);
+            printer.Print();
         }
     }
 }
