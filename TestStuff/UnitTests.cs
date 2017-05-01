@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PrintStuff;
+using DataSource;
 
 namespace TestStuff
 {
@@ -12,7 +13,7 @@ namespace TestStuff
         {
             // arrange
             var target = new Formatter();
-            var src = new DataSource();
+            var src = new ProcessIdSource();
             var expected = "Current Process ID: 200";
 
             // act
@@ -27,7 +28,7 @@ namespace TestStuff
         public void TestPrint()
         {
             // arrange
-            var data = new DataSource();
+            var data = new ProcessIdSource();
             var frmt = new Formatter();
 
             var target = new Printer(frmt, data);
