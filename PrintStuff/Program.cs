@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataSource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace PrintStuff
     {
         static void Main(string[] args)
         {
-            var data = new DataSource();
+            var data = new ProcessIdSource();
             var formatter = new Formatter();
             var printer = new Printer(formatter, data);
             printer.Print();

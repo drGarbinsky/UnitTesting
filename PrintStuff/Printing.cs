@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataSource;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,24 +8,10 @@ using System.Threading.Tasks;
 
 namespace PrintStuff
 {
-    /// <summary>
-    /// a stand-in for an external service like a DB
-    /// </summary>
-    public class DataSource
-    {
-        public int GetProcId()
-        {
-            // pretend this is some complex stuff that can't be done in a unit tests
-            return Process.GetCurrentProcess().Id;
-        }
-    }
-
-
-
 
     public class Formatter
     {
-        public string GetFormatedOutput(DataSource src)
+        public string GetFormatedOutput(IDataSource src)
         {
             var procId = src.GetProcId();
             return string.Format("Current Process ID: {0}", procId);
@@ -35,9 +22,9 @@ namespace PrintStuff
     public class Printer
     {
         private Formatter formatter;
-        private DataSource source;
+        private ProcessIdSource source;
 
-        public Printer(Formatter fmt, DataSource src)
+        public Printer(Formatter fmt, ProcessIdSource src)
         {
             this.formatter = fmt;
             this.source = src;
