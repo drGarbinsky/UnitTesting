@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace PrintStuff
 {
-
+    /// <summary>
+    /// A simple stand-in for a more complex real world class.
+    /// </summary>
     public class Formatter
     {
         public string GetFormatedOutput(IDataSource src)
@@ -24,6 +26,8 @@ namespace PrintStuff
 
     public class Printer
     {
+
+        // These to private fields represent tight coupling 
         private Formatter formatter;
         private ProcessIdSource source;
 
@@ -32,6 +36,7 @@ namespace PrintStuff
             this.formatter = fmt;
             this.source = src;
         }
+
 
         public void Print()
         {
