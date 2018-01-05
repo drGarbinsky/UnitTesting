@@ -14,6 +14,9 @@ namespace PrintStuff
         public string GetFormatedOutput(IDataSource src)
         {
             var procId = src.GetProcId();
+
+            // this is a very simple method but is a stand in for something more real world.
+            // Imgine that something more complex is being done here.
             return string.Format("Current Process ID: {0}", procId);
         }
     }
