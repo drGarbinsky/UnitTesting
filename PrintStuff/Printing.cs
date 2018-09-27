@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,20 +30,29 @@ namespace PrintStuff
 
         // These to private fields represent tight coupling 
         private Formatter formatter;
-        private ProcessIdSource source;
+        private IDataSource source;
 
-        public Printer(Formatter fmt, ProcessIdSource src)
+        public Printer(Formatter fmt, IDataSource src)
         {
             this.formatter = fmt;
             this.source = src;
         }
 
 
+        /// <summary>
+        /// Do not change this method signature. 
+        /// </summary>
         public void Print()
         {
             var id = this.source.GetProcId();
             var message = this.formatter.GetFormatedOutput(this.source);
-            Console.WriteLine(message);
+            var filename = $".\\output-{id}.txt";
+            if (id % 2 == 0)
+            {
+                //Statics are inherently untestable
+                //imagine this is a call to an external system
+                File.WriteAllText(filename, message);
+            }
         }
     }
 }

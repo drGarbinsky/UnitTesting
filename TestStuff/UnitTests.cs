@@ -9,7 +9,7 @@ namespace TestStuff
     public class UnitTests
     {
         [TestMethod]
-        public void TestGetFormatedOutput()
+        public void GiveProcessInfoOutputIsFormatted()
         {
             // arrange
             var target = new Formatter();
@@ -25,7 +25,7 @@ namespace TestStuff
 
 
         [TestMethod]
-        public void TestPrint()
+        public void GivenEvenProcessIdOutputIsWrittenToFile()
         {
             // arrange
             var data = new ProcessIdSource();
@@ -37,7 +37,24 @@ namespace TestStuff
             target.Print();
 
             // Assert
-            // what goes here??
+            // How do we know 
+
+        }
+
+        [TestMethod]
+        public void GivenOddProcessIdOutputIsNotWrittenToFile()
+        {
+            // arrange
+            var data = new ProcessIdSource();
+            var frmt = new Formatter();
+
+            var target = new Printer(frmt, data);
+
+            // act
+            target.Print();
+
+            // Assert
+            // How do we know 
 
         }
     }
